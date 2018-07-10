@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>TinyF2F</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdui/0.4.0/css/mdui.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdui/0.4.0/js/mdui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/mdui/0.4.1/css/mdui.min.css">
+    <script src="https://cdn.bootcss.com/mdui/0.4.1/js/mdui.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
 </head>
 <body>
     <div class="mdui-container">
         <h1>TinyF2F</h1>
         <form action="qrcode.php" class="mdui-textfield mdui-textfield-floating-label" method="post">
             <label class="mdui-textfield-label">请输入金额然后使用支付宝扫描二维码</label>
-            <input class="mdui-textfield-input" name="sum" type="number"/>
+            <input class="mdui-textfield-input" name="sum" type="number" step="0.01" min="0.01" max="100" value="1.00" />
             <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block"">确认并提交订单</button>
         </form>
         <div id="qrCode" class="mdui-center" style="width: 300px">
@@ -39,9 +39,10 @@ $result = $aliPay->doPay();
 $result = $result['alipay_trade_precreate_response'];
 if($result['code'] && $result['code']=='10000'){
     //生成二维码
-    $url = 'http://pan.baidu.com/share/qrcode?w=300&h=300&url='.$result['qr_code'];
-    echo "<img src='{$url}' style='width:300px;'>";
-    echo '<center><p class="mdui-typo">请使用支付宝扫描二维码付款</p></center>';
+	$f2furl = $result['qr_code'];
+    $url = 'https://www.kuaizhan.com/common/encode-png?large=true&data='.$f2furl;
+    echo "<a href='{$f2furl}' target='_blank'><img src='{$url}' style='width:300px;' /></a>";
+    echo '<center><p class="mdui-typo">支付宝扫描或直接点击二维码付款</p></center>';
 }else{
     echo $result['msg'].' : '.$result['sub_msg'];
 }
