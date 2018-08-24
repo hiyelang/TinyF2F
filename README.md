@@ -6,9 +6,7 @@
 
 TinyF2F是一个适用于多种场景的支付宝当面付简单收款工具。
 
-[Demo](https://www.lowendapple.com/qrcode.php)|[野狼博客](https://www.sstype.com/)|[LowEndApple](https://www.lowendapple.com/)
 
-![demo](http://ww1.sinaimg.cn/large/c183713ely1fpjozorohvj20zz06qglx.jpg)
 
 ## 说明
 
