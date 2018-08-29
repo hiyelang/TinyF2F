@@ -212,7 +212,7 @@ class AlipayService
         </div>
     </div>
     <div class="footer mdui-typo" style="text-align: center;">
-        <p>Powered by <a href="https://www.sstype.com">野狼博客</a> &#38; <a href="https://www.lowendapple.com">LowEndApple</a></p>
+        <p>Powered by <a href="https://www.sstype.com">野狼博客</a></p>
     </div>
 </body>
 </html>
